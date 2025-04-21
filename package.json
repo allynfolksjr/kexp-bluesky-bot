@@ -1,0 +1,22 @@
+{
+  "name": "kexp-bluesky-bot",
+  "version": "1.0.0",
+  "description": "KEXP Bluesky Bot (Unofficial)",
+  "main": "src/index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "watch": "tsc -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/allynfolksjr/kexp-bluesky-bot.git"
+  },
+  "keywords": [],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.0.0"
+  },
+  "dependencies": {}
+}
