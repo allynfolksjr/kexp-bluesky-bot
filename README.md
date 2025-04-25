@@ -44,6 +44,15 @@ To get started with this project, follow these steps:
 
 You can modify the `src/index.ts` file to implement your application logic. Use the types defined in `src/types/index.ts` for better type safety throughout your code.
 
+## Todo
+* Add link to stream on every song
+* Add Apple Music Link on every song
+* Add album art
+* Add a link to the KEXP website for each song
+* Add a link to the KEXP website for each show
+* Add a link to the KEXP website for each DJ
+
+
 ## Contributing
 
 If you would like to contribute to this project, please fork the repository and submit a pull request.
