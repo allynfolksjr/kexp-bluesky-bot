@@ -64,7 +64,7 @@ async function main() {
 // Create a function to create the full song post
 function fullSongPost(songString: string): RichText {
   const richTextPost = new RichText({
-    text: songString + ` — https://kexp.org/listen`
+    text: songString // + ` — https://kexp.org/listen`
   });
   richTextPost.detectFacets(agent);
   return richTextPost;
