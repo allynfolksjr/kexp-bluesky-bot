@@ -36,7 +36,6 @@ npm run dev
 ```
 
 ## Todo
-* Add link to stream on every song
 * Add Apple Music Link on every song
 * Add album art(?)
 * Add a link to the KEXP website for each song
