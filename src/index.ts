@@ -16,8 +16,6 @@ const agent = new AtpAgent({
   service: 'https://bsky.social',
 })
 
-let currentShowId: number | undefined;
-
 async function main() {
   try {
     await agent.login({ identifier: process.env.BLUESKY_USERNAME!, password: process.env.BLUESKY_PASSWORD! })
@@ -100,7 +98,7 @@ function formatSongString(song: KexpApiPlayResponse): string {
 }
 
 async function postShow(showId: number): Promise<void> {
-  currentShowId = await storage.getItem('currentShowId');
+  const currentShowId = await storage.getItem('currentShowId');
   logger.info(`Current show ID from storage: ${currentShowId}`);
   // If the show ID is different from the last one, we need to fetch the show info and post it
   if (showId !== currentShowId) {
