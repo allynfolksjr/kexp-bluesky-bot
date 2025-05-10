@@ -81,11 +81,12 @@ async function main() {
       return;
     }
 
-    const artistString = song.artist.name;
-    const songString = song.track.name;
+    const artistString = song.artist?.name || "Unknown Artist";
+    const songString = song.track.name || "Unknown Song";
     const albumString = song.release?.name || "Unknown Album";
     const albumYear = song.releaseevent?.year || "Unknown Year";
     let fullSongString = `“${songString}” ${artistString}`;
+
 
     if (albumString !== "Unknown Album") {
       fullSongString += ` — ${albumString}`;
@@ -111,6 +112,8 @@ async function main() {
   } catch (error) {
     if (error instanceof Error) {
       logger.error(`Error: ${error.message}`);
+      logger.error(`Stack: ${error.stack}`);
+
     } else {
       logger.error(`Error: ${error}`);
     }

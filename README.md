@@ -1,19 +1,7 @@
-# My TypeScript Project
+# KEXP Bluesky Bot
 
-This is a simple TypeScript project that demonstrates the basic structure and setup for a TypeScript application.
+Very simple bot for Bluesky that posts the current song playing on KEXP radio. Also some show-related stuff if we can.
 
-## Project Structure
-
-```
-my-typescript-project
-├── src
-│   ├── index.ts          # Entry point of the application
-│   └── types
-│       └── index.ts      # Type definitions and interfaces
-├── package.json           # NPM configuration file
-├── tsconfig.json          # TypeScript configuration file
-└── README.md              # Project documentation
-```
 
 ## Getting Started
 
@@ -40,18 +28,20 @@ To get started with this project, follow these steps:
    node dist/index.js
    ```
 
-## Usage
+## Dev Mode
+To run the application in development mode, use the following command:
 
-You can modify the `src/index.ts` file to implement your application logic. Use the types defined in `src/types/index.ts` for better type safety throughout your code.
+```
+npm run dev
+```
 
 ## Todo
 * Add link to stream on every song
 * Add Apple Music Link on every song
-* Add album art
+* Add album art(?)
 * Add a link to the KEXP website for each song
 * Add a link to the KEXP website for each show
 * Add a link to the KEXP website for each DJ
-
 
 ## Contributing
 
