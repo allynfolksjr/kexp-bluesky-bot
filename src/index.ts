@@ -4,7 +4,6 @@ import { CronJob } from 'cron';
 import * as process from 'process';
 import fetch from 'node-fetch';
 import { KexpApiPlayResponse, KexpApiShowResponse } from './types';
-import { release } from 'os';
 
 const logger = require('pino')();
 const storage = require('node-persist');
