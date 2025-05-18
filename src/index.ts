@@ -4,6 +4,7 @@ import { CronJob } from 'cron';
 import * as process from 'process';
 import fetch from 'node-fetch';
 import { KexpApiPlayResponse, KexpApiShowResponse } from './types';
+import { release } from 'os';
 
 const logger = require('pino')();
 const storage = require('node-persist');
@@ -82,19 +83,25 @@ function formatSongString(song: KexpApiPlayResponse): string {
   const artistString = song.artist || "Unknown Artist";
   const songString = song.song || "Unknown Song";
   const albumString = song.album || "Unknown Album";
-  // get a year from the release date string
-  const releaseDate = new Date(song.release_date);
-  const releaseYear = releaseDate.getFullYear();
-  const albumYear = releaseYear || "Unknown Year";
-  let fullSongString = `“${songString}” ${artistString}`;
 
+  // get a year from the release date string
+  var releaseYear = null;
+  if (song.release_date !== null) {
+    const releaseDate = new Date(song.release_date);
+    releaseYear = releaseDate.getFullYear();
+    if (isNaN(releaseYear)) {
+      logger.info("Release year is NaN");
+    }
+  }
+
+  let fullSongString = `“${songString}” ${artistString}`;
 
   if (albumString !== "Unknown Album") {
     fullSongString += ` — ${albumString}`;
   }
 
-  if (albumYear !== "Unknown Year") {
-    fullSongString += ` (${albumYear})`;
+  if (releaseYear !== null) {
+    fullSongString += ` (${releaseYear})`;
   }
 
   return fullSongString;

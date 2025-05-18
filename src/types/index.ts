@@ -1,11 +1,11 @@
 export interface KexpApiPlayResponse {
   show: number;
-  artist: string;
-  location_name: string;
-  song: string;
-  album: string;
-  playtype: string;
-  release_date: string;
+  artist: string | null;
+  location_name: string | null;
+  song: string | null;
+  album: string | null;
+  playtype: string | null;
+  release_date: string | null;
 }
 
 export interface KexpApiShowResponse {
