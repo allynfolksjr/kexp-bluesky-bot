@@ -1,21 +1,11 @@
 export interface KexpApiPlayResponse {
-  playtype: {
-    id: number;
-    name: string;
-  };
-  artist: {
-    name: string;
-  };
-  track: {
-    name: string;
-  };
-  release?: {
-    name: string;
-  };
-  releaseevent?: {
-    year: string;
-  };
-  showid: number;
+  show: number;
+  artist: string;
+  location_name: string;
+  song: string;
+  album: string;
+  playtype: string;
+  release_date: string;
 }
 
 export interface KexpApiShowResponse {

@@ -22,7 +22,7 @@ async function main() {
 
     const song = await getSong();
 
-    const showId = song.showid;
+    const showId = song.show;
 
     // Post the Show
     await postShow(showId);
@@ -73,16 +73,19 @@ function fullSongPost(songString: string): RichText {
 // Format the response into a song string
 function formatSongString(song: KexpApiPlayResponse): string {
   // If it's an Air break, don't post anything
-  const playType = song.playtype.name;
-  if (playType === "Air break") {
+  const playType = song.playtype;
+  if (playType === "airbreak") {
     logger.info("Air break, not posting anything");
     return '';
   }
 
-  const artistString = song.artist?.name || "Unknown Artist";
-  const songString = song.track.name || "Unknown Song";
-  const albumString = song.release?.name || "Unknown Album";
-  const albumYear = song.releaseevent?.year || "Unknown Year";
+  const artistString = song.artist || "Unknown Artist";
+  const songString = song.song || "Unknown Song";
+  const albumString = song.album || "Unknown Album";
+  // get a year from the release date string
+  const releaseDate = new Date(song.release_date);
+  const releaseYear = releaseDate.getFullYear();
+  const albumYear = releaseYear || "Unknown Year";
   let fullSongString = `“${songString}” ${artistString}`;
 
 
@@ -140,8 +143,9 @@ async function postShow(showId: number): Promise<void> {
 
 async function getSong(): Promise<KexpApiPlayResponse> {
   logger.info("Fetching song");
+  // Bay Area is location 2
   const songResponse = await fetch(
-    'https://api.kexp.org/v1/play/?format=json&limit=1',
+    'https://api.kexp.org/v2/plays/?format=json&playlist_location=3&limit=3',
     {
       headers: {
         'User-Agent': 'kexp-bluesky-bot/0.1 - nikky@uw.edu',
