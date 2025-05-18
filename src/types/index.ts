@@ -4,7 +4,7 @@ export interface KexpApiPlayResponse {
   location_name: string | null;
   song: string | null;
   album: string | null;
-  playtype: string | null;
+  play_type: string;
   release_date: string | null;
 }
 

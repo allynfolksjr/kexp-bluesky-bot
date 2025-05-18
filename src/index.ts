@@ -74,7 +74,7 @@ function fullSongPost(songString: string): RichText {
 // Format the response into a song string
 function formatSongString(song: KexpApiPlayResponse): string {
   // If it's an Air break, don't post anything
-  const playType = song.playtype;
+  const playType = song.play_type;
   if (playType === "airbreak") {
     logger.info("Air break, not posting anything");
     return '';
@@ -91,6 +91,7 @@ function formatSongString(song: KexpApiPlayResponse): string {
     releaseYear = releaseDate.getFullYear();
     if (isNaN(releaseYear)) {
       logger.info("Release year is NaN");
+      releaseYear = null;
     }
   }
 
